@@ -29,5 +29,21 @@ var firebaseConfig = {
   })
   });
 
+  //this will add to the table
+  database.ref().on("child_added", function(childSnapshot){
+      var sv = childSnapshot.val()
+    console.log(sv.name);
+    console.log(sv.role);
+    console.log(sv.startDate);
+    console.log(sv.monthlyRate);
+    
+    var newRow = $("<tr>");
+    var newData = $("<td>");
+    newData.addClass("employeeName");
+    newData.text(sv.name);
+    $(".table").append(newRow);
+    newRow.append(newData);
+  });
+
  
 
